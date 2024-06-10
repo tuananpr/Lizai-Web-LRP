@@ -3,5 +3,7 @@
 <suite name="Test LizAI"  >
     <suite-files>
         <suite-file path="Suite_SignIn.xml" />
+        <suite-file path="Suite_Studies.xml" />
+
     </suite-files>
 </suite>

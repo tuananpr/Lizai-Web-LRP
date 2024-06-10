@@ -1,8 +1,12 @@
 package WebBrowser;
 
+import Core.DataProviderFactory;
 import Core.Support.General.Hooks;
-import LizAI.Pages.SignInPage;
+import LizAI.Pages.Features.SignInPage;
 import org.testng.annotations.*;
+
+import java.util.HashMap;
+
 
 public class SignIn_Test extends Hooks {
 
@@ -15,19 +19,31 @@ public class SignIn_Test extends Hooks {
     @AfterMethod
 
     public void tearDown(){
+        System.out.println("After..............................");
         after();
     }
 
-    String userEmail = "tyler.nguyen@lizai.co";
-    String userPassword = "123456";
-
-    @Test(priority = 1)
-
-    public void Signin_Email() throws  InterruptedException{
+    @Test(priority = 1, dataProvider = "SystemAdministrator", dataProviderClass = DataProviderFactory.class)
+    public void Signin_SystemAdmin(HashMap<String, String>data) throws  InterruptedException{
         SignInPage signInPage = new SignInPage(true);
-        signInPage.signIn(userEmail,userPassword);
+        signInPage.signIn(data.get("ID"),data.get("Password"));
         signInPage.waitForPageLoadComplete();
-        signInPage.label_Dashboard(userEmail);
+        signInPage.label_UserName(data.get("SystemAdminName"));
     }
 
+    @Test(priority = 2, dataProvider = "Administrator", dataProviderClass = DataProviderFactory.class)
+    public void Signin_Admin(HashMap<String, String>data) throws  InterruptedException {
+        SignInPage signInPage = new SignInPage(true);
+        signInPage.signIn(data.get("ID"),data.get("Password"));
+        signInPage.waitForPageLoadComplete();
+        signInPage.label_UserName(data.get("AdminName"));
+    }
+
+    @Test(priority = 3, dataProvider = "UserAccount", dataProviderClass = DataProviderFactory.class)
+    public void Signin_User(HashMap<String, String>data) throws  InterruptedException {
+        SignInPage signInPage = new SignInPage(true);
+        signInPage.signIn(data.get("ID"),data.get("Password"));
+        signInPage.waitForPageLoadComplete();
+        signInPage.label_UserName(data.get("UserName"));
+    }
 }

@@ -11,12 +11,13 @@ public class BaseLizAIPages extends BasePage {
     private final String xpath_circleLoading = "//div[@class='loading-container']";
     private final String xpath_thundraTraceSnackBarError = "//snack-bar-container[contains(.,'Error')]";
     private final String xpath_toolTip = "//div[@class='tooltip BR']";
+    private static final String xpath_ToastContainer = "//mat-snack-bar-container//simple-snack-bar/div[@matsnackbarlabel]";
 
     //elements
     private final Label loading = new Label(By.xpath(xpath_circleLoading), "Loading");
     private final Label labelThundraSnackBarError = new Label(By.xpath(xpath_thundraTraceSnackBarError), "Thundra Error");
     private final Label labelToolTip = new Label(By.xpath(xpath_toolTip), "ToolTip");
-    public static final Label labelToastContainer = new Label(By.id("toast-container"),"labelToastContainer");
+    private static final Label labelToastContainer = new Label(By.xpath(xpath_ToastContainer),"labelToastContainer");
 
     //constructor
     public BaseLizAIPages(By pageLocator, String pageName, boolean assertPageOpen) {super(pageLocator, pageName, assertPageOpen);}

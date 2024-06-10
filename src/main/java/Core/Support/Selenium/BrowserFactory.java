@@ -27,13 +27,13 @@ public class BrowserFactory extends BaseEntities {
         }
 
         if (browser.equalsIgnoreCase(CHROME)) {
-//            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(initChromeOptions(additionalInfo));
         } else if (browser.equalsIgnoreCase(FIREFOX)) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver(initFirefoxOptions());
         } else {
-            Assert.fail(browser + " is not supported yet. Please contact Tung Do.");
+            Assert.fail(browser + " is not supported yet.");
         }
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();

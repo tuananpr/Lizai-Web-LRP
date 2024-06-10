@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<suite name="Test Login">
-    <test name="MainAccountUpdateInfo">
+<suite name="Test SignIn">
+    <test name= "Signin">
         <classes>
             <class name="WebBrowser.SignIn_Test"/>
-            <methods>
-            </methods>
+                <methods>
+                    <include name = "Signin_Admin" priority="2" />
+                </methods>
         </classes>
     </test>
 </suite>

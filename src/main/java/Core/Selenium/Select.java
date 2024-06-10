@@ -10,6 +10,7 @@ public class Select extends BaseElement {
 
     private static String type = "Select";
 
+
     public Select(By by, String name) {
         super(by, type, name);
     }
